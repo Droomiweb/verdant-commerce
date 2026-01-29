@@ -1,13 +1,23 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Layout } from "@/components/layout/Layout";
+import { HeroSection } from "@/components/home/HeroSection";
+import { FeaturedProducts } from "@/components/home/FeaturedProducts";
+import { CategoriesSection } from "@/components/home/CategoriesSection";
+import { PromoSection } from "@/components/home/PromoSection";
+import { TestimonialsSection } from "@/components/home/TestimonialsSection";
+import { FeaturesSection } from "@/components/home/FeaturesSection";
+import { mockProducts } from "@/data/mockData";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <Layout>
+      <HeroSection />
+      <FeaturesSection />
+      <FeaturedProducts products={mockProducts.slice(0, 4)} />
+      <CategoriesSection />
+      <PromoSection />
+      <FeaturedProducts products={mockProducts.slice(4)} />
+      <TestimonialsSection />
+    </Layout>
   );
 };
 
