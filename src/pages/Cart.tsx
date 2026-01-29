@@ -79,13 +79,13 @@ const Cart = () => {
                     {item.name}
                   </Link>
                   
-                  <div className="flex items-baseline gap-2 mt-1">
+                    <div className="flex items-baseline gap-2 mt-1">
                     <span className="font-bold text-foreground">
-                      ${item.price.toFixed(2)}
+                      ₹{item.price.toFixed(2)}
                     </span>
                     {item.originalPrice && (
                       <span className="text-sm text-muted-foreground line-through">
-                        ${item.originalPrice.toFixed(2)}
+                        ₹{item.originalPrice.toFixed(2)}
                       </span>
                     )}
                   </div>
@@ -127,7 +127,7 @@ const Cart = () => {
                 <div className="hidden sm:block text-right">
                   <p className="text-sm text-muted-foreground">Subtotal</p>
                   <p className="font-bold text-lg">
-                    ${(item.price * item.quantity).toFixed(2)}
+                    ₹{(item.price * item.quantity).toFixed(2)}
                   </p>
                 </div>
               </motion.div>
@@ -146,7 +146,7 @@ const Cart = () => {
               <div className="space-y-4 mb-6">
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Subtotal</span>
-                  <span className="font-medium">${total.toFixed(2)}</span>
+                  <span className="font-medium">₹{total.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Shipping</span>
@@ -154,19 +154,19 @@ const Cart = () => {
                     {shipping === 0 ? (
                       <span className="text-success">Free</span>
                     ) : (
-                      `$${shipping.toFixed(2)}`
+                      `₹${shipping.toFixed(2)}`
                     )}
                   </span>
                 </div>
                 {shipping > 0 && (
                   <p className="text-sm text-muted-foreground">
-                    Add ${(50 - total).toFixed(2)} more for free shipping
+                    Add ₹{(50 - total).toFixed(2)} more for free shipping
                   </p>
                 )}
                 <div className="border-t pt-4 flex justify-between">
                   <span className="font-semibold">Total</span>
                   <span className="font-bold text-xl">
-                    ${grandTotal.toFixed(2)}
+                    ₹{grandTotal.toFixed(2)}
                   </span>
                 </div>
               </div>

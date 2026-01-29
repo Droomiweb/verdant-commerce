@@ -97,7 +97,7 @@ export function HeroSection() {
                 className="absolute -bottom-4 -left-4 bg-card shadow-xl rounded-2xl p-4 border border-border"
               >
                 <p className="text-sm text-muted-foreground">Starting from</p>
-                <p className="text-2xl font-bold text-primary">$29.99</p>
+                <p className="text-2xl font-bold text-primary">₹29.99</p>
               </motion.div>
 
               {/* Floating Stats */}

@@ -65,7 +65,7 @@ export function PromoSection() {
               className="absolute -bottom-6 -right-6 bg-accent text-accent-foreground rounded-2xl p-6 shadow-lg"
             >
               <p className="text-sm font-medium">Save up to</p>
-              <p className="text-4xl font-bold">$200</p>
+              <p className="text-4xl font-bold">₹200</p>
             </motion.div>
           </motion.div>
         </div>

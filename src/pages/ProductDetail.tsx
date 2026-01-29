@@ -181,16 +181,16 @@ const ProductDetail = () => {
             {/* Price */}
             <div className="flex items-baseline gap-3">
               <span className="text-3xl font-bold text-foreground">
-                ${product.price.toFixed(2)}
+                ₹{product.price.toFixed(2)}
               </span>
               {product.originalPrice && (
                 <span className="text-xl text-muted-foreground line-through">
-                  ${product.originalPrice.toFixed(2)}
+                  ₹{product.originalPrice.toFixed(2)}
                 </span>
               )}
               {discount > 0 && (
                 <span className="text-sm font-semibold text-destructive">
-                  Save ${(product.originalPrice! - product.price).toFixed(2)}
+                  Save ₹{(product.originalPrice! - product.price).toFixed(2)}
                 </span>
               )}
             </div>
@@ -324,7 +324,7 @@ const ProductDetail = () => {
             <div className="space-y-4 text-muted-foreground">
               <p>
                 <strong className="text-foreground">Free Shipping:</strong>{" "}
-                Available on all orders over $50
+                Available on all orders over ₹50
               </p>
               <p>
                 <strong className="text-foreground">Standard Delivery:</strong>{" "}
@@ -332,7 +332,7 @@ const ProductDetail = () => {
               </p>
               <p>
                 <strong className="text-foreground">Express Delivery:</strong>{" "}
-                2-3 business days (additional $9.99)
+                2-3 business days (additional ₹9.99)
               </p>
             </div>
           </TabsContent>

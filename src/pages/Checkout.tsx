@@ -201,7 +201,7 @@ const Checkout = () => {
                     onClick={handlePlaceOrder}
                     disabled={isProcessing}
                   >
-                    {isProcessing ? "Processing..." : `Pay $${grandTotal.toFixed(2)}`}
+                    {isProcessing ? "Processing..." : `Pay ₹${grandTotal.toFixed(2)}`}
                   </Button>
                 </div>
               </motion.div>
@@ -262,7 +262,7 @@ const Checkout = () => {
                         </p>
                       </div>
                       <p className="font-medium">
-                        ${(item.price * item.quantity).toFixed(2)}
+                        ₹{(item.price * item.quantity).toFixed(2)}
                       </p>
                     </div>
                   ))}
@@ -271,7 +271,7 @@ const Checkout = () => {
                 <div className="space-y-3 border-t pt-4">
                   <div className="flex justify-between text-sm">
                     <span className="text-muted-foreground">Subtotal</span>
-                    <span>${total.toFixed(2)}</span>
+                    <span>₹{total.toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between text-sm">
                     <span className="text-muted-foreground">Shipping</span>
@@ -279,13 +279,13 @@ const Checkout = () => {
                       {shipping === 0 ? (
                         <span className="text-success">Free</span>
                       ) : (
-                        `$${shipping.toFixed(2)}`
+                        `₹${shipping.toFixed(2)}`
                       )}
                     </span>
                   </div>
                   <div className="flex justify-between font-bold text-lg border-t pt-3">
                     <span>Total</span>
-                    <span>${grandTotal.toFixed(2)}</span>
+                    <span>₹{grandTotal.toFixed(2)}</span>
                   </div>
                 </div>
               </div>
