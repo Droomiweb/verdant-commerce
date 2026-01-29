@@ -13,7 +13,7 @@ import { mockProducts, mockCategories } from "@/data/mockData";
 
 const Products = () => {
   const [searchParams] = useSearchParams();
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState(searchParams.get("search") || "");
   const [priceRange, setPriceRange] = useState([0, 500]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [sortBy, setSortBy] = useState("featured");

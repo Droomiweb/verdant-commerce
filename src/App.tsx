@@ -9,6 +9,7 @@ import ProductDetail from "./pages/ProductDetail";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import Categories from "./pages/Categories";
+import About from "./pages/About";
 import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/Signup";
 import NotFound from "./pages/NotFound";
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/categories" element={<Categories />} />
+          <Route path="/about" element={<About />} />
           <Route path="/auth/login" element={<Login />} />
           <Route path="/auth/signup" element={<Signup />} />
           <Route path="*" element={<NotFound />} />

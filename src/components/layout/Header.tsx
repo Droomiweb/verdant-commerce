@@ -14,6 +14,7 @@ const navLinks = [
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const location = useLocation();
   const { itemCount } = useCart();
 
@@ -53,43 +54,83 @@ export function Header() {
 
           {/* Actions */}
           <div className="flex items-center gap-2">
-            <Button variant="ghost" size="icon" className="hidden sm:flex">
-              <Search className="w-5 h-5" />
-            </Button>
-            <Button variant="ghost" size="icon" className="hidden sm:flex">
-              <Heart className="w-5 h-5" />
-            </Button>
-            <Link to="/cart">
-              <Button variant="ghost" size="icon" className="relative">
-                <ShoppingCart className="w-5 h-5" />
-                {itemCount > 0 && (
-                  <motion.span
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    className="absolute -top-1 -right-1 w-5 h-5 bg-primary text-primary-foreground rounded-full text-xs flex items-center justify-center font-semibold"
+
+            {/* ... actually, let's just do the whole block replacement properly */}
+             <div className={`transition-all duration-300 ${isSearchOpen ? 'w-full sm:w-64 absolute top-16 left-0 px-4 bg-background sm:static sm:bg-transparent sm:p-0' : 'w-auto'}`}>
+                {isSearchOpen ? (
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      const form = e.target as HTMLFormElement;
+                      const input = form.elements.namedItem('search') as HTMLInputElement;
+                      if (input.value.trim()) {
+                         window.location.href = `/products?search=${encodeURIComponent(input.value)}`;
+                         setIsSearchOpen(false);
+                      }
+                    }}
+                    className="flex items-center gap-2 w-full pb-4 sm:pb-0"
                   >
-                    {itemCount}
-                  </motion.span>
+                    <input
+                      name="search"
+                      autoFocus
+                      placeholder="Search..."
+                      className="flex-1 h-9 rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                    />
+                    <Button 
+                      type="button" 
+                      variant="ghost" 
+                      size="icon" 
+                      onClick={() => setIsSearchOpen(false)}
+                    >
+                       <X className="w-4 h-4" />
+                    </Button>
+                  </form>
+                ) : (
+                  <div className="flex items-center gap-2">
+                     <Button 
+                      variant="ghost" 
+                      size="icon" 
+                      className="hidden sm:flex"
+                      onClick={() => setIsSearchOpen(true)}
+                    >
+                      <Search className="w-5 h-5" />
+                    </Button>
+                    <Button variant="ghost" size="icon" className="hidden sm:flex">
+                      <Heart className="w-5 h-5" />
+                    </Button>
+                    <Link to="/cart">
+                      <Button variant="ghost" size="icon" className="relative">
+                        <ShoppingCart className="w-5 h-5" />
+                        {itemCount > 0 && (
+                          <motion.span
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            className="absolute -top-1 -right-1 w-5 h-5 bg-primary text-primary-foreground rounded-full text-xs flex items-center justify-center font-semibold"
+                          >
+                            {itemCount}
+                          </motion.span>
+                        )}
+                      </Button>
+                    </Link>
+                    <Link to="/auth/login" className="hidden sm:block">
+                      <Button variant="outline" size="sm">
+                        <User className="w-4 h-4 mr-1" />
+                        Login
+                      </Button>
+                    </Link>
+                    
+                    {/* Mobile Menu Toggle */}
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="md:hidden"
+                      onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    >
+                      {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                    </Button>
+                  </div>
                 )}
-              </Button>
-            </Link>
-            <Link to="/auth/login" className="hidden sm:block">
-              <Button variant="outline" size="sm">
-                <User className="w-4 h-4 mr-1" />
-                Login
-              </Button>
-            </Link>
-            
-            {/* Mobile Menu Toggle */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="md:hidden"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </Button>
-          </div>
+            </div>
         </div>
 
         {/* Mobile Navigation */}
